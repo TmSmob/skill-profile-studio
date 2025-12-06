@@ -1,73 +1,126 @@
-# Welcome to your Lovable project
+# Soft Skill Strength Analyzer
 
-## Project info
+A simple web application that helps you assess and visualize your soft skills. Rate yourself on six key skills using interactive sliders, and get instant feedback on your strengths, areas for growth, and overall profile.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Features
 
-## How can I edit this code?
+- **Interactive Skill Rating**: Use sliders to rate yourself from 1-10 on six soft skills:
+  - Communication
+  - Empathy
+  - Leadership
+  - Conflict Resolution
+  - Adaptability
+  - Time Management
 
-There are several ways of editing your application.
+- **Real-time Analysis**: Get instant feedback including:
+  - Overall average score
+  - Top 2 strengths
+  - Top 2 areas for growth
+  - Personalized profile label (Collaborative Communicator, Decisive Leader, or Balanced Growth Profile)
 
-**Use Lovable**
+- **Clean UI**: Modern, responsive design built with shadcn/ui components
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+You'll need Node.js and npm installed. If you don't have them, install Node.js from [nodejs.org](https://nodejs.org/) or use [nvm](https://github.com/nvm-sh/nvm).
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd skill-profile-studio
+```
 
-Follow these steps:
+2. Install dependencies:
+```bash
+npm install
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build for Production
 
-**Use GitHub Codespaces**
+To create a production build:
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The output will be in the `dist` folder. You can preview it with:
+```bash
+npm run preview
+```
 
-## What technologies are used for this project?
+## Project Structure
 
-This project is built with:
+The codebase follows a clean, scalable architecture:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+src/
+├── components/          # Reusable UI components
+│   ├── Layout.tsx       # Main layout with header and footer
+│   ├── SkillList.tsx    # Renders the list of skill sliders
+│   ├── SkillSlider.tsx  # Individual skill slider component
+│   └── SummaryPanel.tsx # Displays analysis results
+├── hooks/
+│   └── useSkillProfile.ts  # Custom hook for skill state management
+├── data/
+│   └── skills.tsx       # Skill definitions and data
+└── pages/
+    └── Index.tsx        # Main page component
+```
 
-## How can I deploy this project?
+## Tech Stack
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+- **React 18** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **shadcn/ui** - UI component library
+- **Tailwind CSS** - Styling
+- **React Router** - Routing
+- **Lucide React** - Icons
 
-## Can I connect a custom domain to my Lovable project?
+## Available Scripts
 
-Yes, you can!
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run build:dev` - Build in development mode
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## How It Works
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+1. Each skill has a default value that you can adjust using the slider
+2. As you change values, the summary panel updates in real-time
+3. The app calculates:
+   - Average score across all skills
+   - Top 2 highest-rated skills (strengths)
+   - Bottom 2 lowest-rated skills (areas for growth)
+   - Profile label based on specific skill combinations
+
+4. Click "Reset to Default" to restore all skills to their initial values
+
+## Customization
+
+To add or modify skills, edit `src/data/skills.tsx`. Each skill needs:
+- `id`: Unique identifier
+- `label`: Display name
+- `icon`: React component from lucide-react
+- `defaultValue`: Initial rating (1-10)
+
+The profile label logic can be customized in `src/hooks/useSkillProfile.ts`.
+
+## Notes
+
+This tool is for self-reflection only and not a formal assessment. The results are based on your own ratings and should be used as a starting point for personal development.
+
+## License
+
+This project is private and not licensed for public use.

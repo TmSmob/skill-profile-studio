@@ -4,11 +4,11 @@ import { TrendingUp, TrendingDown, Award, BarChart3 } from "lucide-react";
 interface SummaryPanelProps {
   averageScore: number;
   strengths: string[];
-  improvements: string[];
+  weaknesses: string[];
   profileLabel: string;
 }
 
-const SummaryPanel = ({ averageScore, strengths, improvements, profileLabel }: SummaryPanelProps) => {
+const SummaryPanel = ({ averageScore, strengths, weaknesses, profileLabel }: SummaryPanelProps) => {
   return (
     <div className="space-y-5 animate-fade-in">
       {/* Profile Label Card */}
@@ -80,7 +80,7 @@ const SummaryPanel = ({ averageScore, strengths, improvements, profileLabel }: S
         </CardHeader>
         <CardContent>
           <ul className="space-y-2">
-            {improvements.map((area, index) => (
+            {weaknesses.map((area, index) => (
               <li 
                 key={area} 
                 className="flex items-center gap-3 animate-fade-in"
